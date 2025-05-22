@@ -1,5 +1,6 @@
 package com.example.geradordor_de_qrcode.domain.category;
 
+import com.example.geradordor_de_qrcode.DTO.CategoryDTO;
 import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,9 @@ public class Category {
     private String description;
     private String ownerId;
 
+    public Category(CategoryDTO categoryDTO) {
+        this.description = description;
+        this.ownerId = ownerId;
+        this.title = title;
+    }
 }
