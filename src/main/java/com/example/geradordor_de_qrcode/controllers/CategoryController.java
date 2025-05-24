@@ -1,6 +1,7 @@
 package com.example.geradordor_de_qrcode.controllers;
 import com.example.geradordor_de_qrcode.DTO.CategoryDTO;
 import com.example.geradordor_de_qrcode.domain.category.Category;
+import com.example.geradordor_de_qrcode.domain.category.exceptions.CategoryNotFoundException;
 import com.example.geradordor_de_qrcode.services.CategoryService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +36,11 @@ public class CategoryController {
     public ResponseEntity<Category> update(@PathParam ("id") String ID, @RequestBody CategoryDTO categoryData) {
         Category newCategory = this.categoryService.update(ID,categoryData);
         return ResponseEntity.ok().body(new Category());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") String ID) {
+        this.categoryService.delete(ID);
+        return ResponseEntity.noContent().build();
     }
 }

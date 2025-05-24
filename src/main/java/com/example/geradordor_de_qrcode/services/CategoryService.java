@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -25,6 +26,9 @@ public class CategoryService {
     public List<Category> getAll(){
         return this.categoryRepository.findAll();
     }
+    public Optional <Category> getByID(String ID){
+        return this.categoryRepository.findById (ID);
+    }
 
     public Category update(String ID ,CategoryDTO categoryDTO){
         Category category = this.categoryRepository.findById(ID).orElseThrow(CategoryNotFoundException::new);
@@ -34,6 +38,12 @@ public class CategoryService {
         this.categoryRepository.save(category);
 
         return category;
+    }
+
+    public void delete(String ID){
+        Category category = this.categoryRepository.findById(ID).orElseThrow(CategoryNotFoundException::new);
+        this.categoryRepository.delete(category);
+
     }
 
 

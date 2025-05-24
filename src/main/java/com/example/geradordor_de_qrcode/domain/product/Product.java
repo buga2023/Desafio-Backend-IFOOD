@@ -1,5 +1,6 @@
 package com.example.geradordor_de_qrcode.domain.product;
 
+import com.example.geradordor_de_qrcode.DTO.ProductDTO;
 import com.example.geradordor_de_qrcode.domain.category.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,13 @@ public class Product {
     private Category category;
     private String description;
     private Integer price;
+
+    public Product(ProductDTO data) {
+        this.tille = data.title();
+        this.description = data.description();
+        this.price = data.price();
+        this.owner=data.ownerId();
+    }
+
 
 }
